@@ -1,17 +1,21 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=8 format=1]
 
-[ext_resource path="res://spacetile.xml" type="TileSet" id=1]
-[ext_resource path="res://textures/maps/1.jpg" type="Texture" id=2]
-[ext_resource path="res://textures/maps/stars.png" type="Texture" id=3]
-[ext_resource path="res://textures/maps/clouds.png" type="Texture" id=4]
-[ext_resource path="res://player.xml" type="PackedScene" id=5]
+[ext_resource path="res://world1.gd" type="Script" id=1]
+[ext_resource path="res://spacetile.xml" type="TileSet" id=2]
+[ext_resource path="res://textures/maps/1.jpg" type="Texture" id=3]
+[ext_resource path="res://textures/maps/stars.png" type="Texture" id=4]
+[ext_resource path="res://textures/maps/clouds.png" type="Texture" id=5]
+[ext_resource path="res://player.xml" type="PackedScene" id=6]
+[ext_resource path="res://btnExplore.gd" type="Script" id=7]
 
 [node name="world1" type="Node"]
+
+script/script = ExtResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
 
 mode = 0
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 2 )
 cell/size = Vector2( 64, 64 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -28,6 +32,7 @@ tile_data = IntArray(  )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -48,7 +53,7 @@ motion/mirroring = Vector2( 0, 0 )
 [node name="space" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 
 transform/pos = Vector2( 608.444, 392.953 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="ParallaxLayer 2" type="ParallaxLayer" parent="ParallaxBackground"]
 
@@ -59,7 +64,7 @@ motion/mirroring = Vector2( 0, 0 )
 [node name="stars" type="Sprite" parent="ParallaxBackground/ParallaxLayer 2"]
 
 transform/pos = Vector2( 627.458, 348.588 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="ParallaxLayer 3" type="ParallaxLayer" parent="ParallaxBackground"]
 
@@ -69,13 +74,47 @@ motion/mirroring = Vector2( 0, 0 )
 
 [node name="clouds" type="Sprite" parent="ParallaxBackground/ParallaxLayer 3"]
 
-transform/pos = Vector2( 95.9717, 82.3933 )
-texture = ExtResource( 4 )
+transform/pos = Vector2( -6.02832, 131.393 )
+texture = ExtResource( 5 )
 region = true
 region_rect = Rect2( 10000, 10000, 10000, 10000 )
 
-[node name="player" parent="." instance=ExtResource( 5 )]
+[node name="player" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 519.712, 278.87 )
+
+[node name="btnExplore" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 126.0
+margin/top = 396.0
+margin/right = 200.0
+margin/bottom = 454.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+script/script = ExtResource( 7 )
+
+[node name="lblExplore" type="Label" parent="btnExplore"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 4.0
+margin/top = 19.0
+margin/right = 72.0
+margin/bottom = 43.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Explore"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 
