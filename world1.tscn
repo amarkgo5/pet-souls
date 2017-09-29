@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://spacetile.xml" type="TileSet" id=1]
+[ext_resource path="res://textures/maps/1.jpg" type="Texture" id=2]
+[ext_resource path="res://textures/maps/stars.png" type="Texture" id=3]
+[ext_resource path="res://textures/maps/clouds.png" type="Texture" id=4]
+[ext_resource path="res://player.xml" type="PackedScene" id=5]
+
+[node name="world1" type="Node"]
+
+[node name="TileMap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray(  )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+scroll/offset = Vector2( 0, 0 )
+scroll/base_offset = Vector2( 0, 0 )
+scroll/base_scale = Vector2( 1, 1 )
+scroll/limit_begin = Vector2( 0, 0 )
+scroll/limit_end = Vector2( 0, 0 )
+scroll/ignore_camera_zoom = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+motion/scale = Vector2( 0.03, 0.03 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 0 )
+
+[node name="space" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+
+transform/pos = Vector2( 608.444, 392.953 )
+texture = ExtResource( 2 )
+
+[node name="ParallaxLayer 2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+motion/scale = Vector2( 0.07, 0.07 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 0 )
+
+[node name="stars" type="Sprite" parent="ParallaxBackground/ParallaxLayer 2"]
+
+transform/pos = Vector2( 627.458, 348.588 )
+texture = ExtResource( 3 )
+
+[node name="ParallaxLayer 3" type="ParallaxLayer" parent="ParallaxBackground"]
+
+motion/scale = Vector2( 0.5, 0.5 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 0 )
+
+[node name="clouds" type="Sprite" parent="ParallaxBackground/ParallaxLayer 3"]
+
+transform/pos = Vector2( 95.9717, 82.3933 )
+texture = ExtResource( 4 )
+region = true
+region_rect = Rect2( 10000, 10000, 10000, 10000 )
+
+[node name="player" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 519.712, 278.87 )
+
+
