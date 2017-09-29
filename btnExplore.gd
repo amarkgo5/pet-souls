@@ -18,6 +18,6 @@ func _draw():
 		
 func _input_event(event):
 	if (event.type == InputEvent.MOUSE_BUTTON and event.pressed):
-		on = true
+		on = true 
 		emit_signal("pressed")
 		update()
