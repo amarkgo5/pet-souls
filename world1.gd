@@ -13,8 +13,5 @@ func _ready():
 	pass
 
 func _on_btnExplore_pressed():
-	# create instance of battle
-	#var scene = load("res://Battle.tscn")
-	#var node = scene.instance()
-	#add_child(node)
-	get_tree().change_scene("res://Battle.tscn")
+	# Change scene from map to battle
+	get_node("/root/global").goto_scene("res://Battle.tscn")
