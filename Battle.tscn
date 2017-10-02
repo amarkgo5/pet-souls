@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://Battle.gd" type="Script" id=1]
 [ext_resource path="res://textures/background/FFIV_PSP_Forest_Battle.png" type="Texture" id=2]
 [ext_resource path="res://textures/monsters/monster.png" type="Texture" id=3]
-[ext_resource path="res://CHAR.png" type="Texture" id=4]
+[ext_resource path="res://battle_player.gd" type="Script" id=4]
+[ext_resource path="res://CHAR.png" type="Texture" id=5]
 
 [node name="Battle" type="Node"]
 
@@ -134,7 +135,7 @@ stretch_mode = 0
 
 [node name="player" type="Node" parent="."]
 
-editor/display_folded = true
+script/script = ExtResource( 4 )
 
 [node name="TextureFrame" type="TextureFrame" parent="player"]
 
@@ -146,7 +147,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 stretch_mode = 0
 
 [connection signal="pressed" from="btnExit" to="." method="_on_btnExit_pressed"]

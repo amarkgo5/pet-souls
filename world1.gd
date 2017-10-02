@@ -8,7 +8,7 @@ var btnExplore
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	btnExplore = get_node("btnExplore")
+	btnExplore = get_node("ParallaxBackground").get_node("btnExplore")
 	btnExplore.connect("pressed", self, "_on_btnExplore_pressed")
 	pass
 
