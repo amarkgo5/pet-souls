@@ -1,32 +1,56 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://monster.gd" type="Script" id=1]
 [ext_resource path="res://textures/monsters/monster.png" type="Texture" id=2]
 
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 11.3378, 10 )
+
 [node name="monster" type="Control"]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 750.0
-margin/top = 258.0
-margin/right = 850.0
-margin/bottom = 325.0
-script/script = ExtResource( 1 )
-
-[node name="monsterTexture" type="TextureFrame" parent="."]
-
-rect/scale = Vector2( 0.5, 0.5 )
 focus/ignore_mouse = true
-focus/stop_mouse = true
+focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 199.0
-margin/bottom = 128.0
+margin/right = 99.0
+margin/bottom = 65.0
+script/script = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+transform/pos = Vector2( 49.8037, 31.9939 )
+transform/scale = Vector2( 1.52918, 1 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 2.83949, 0, 0, 3.20298, -0.216067, 1.05422 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 1023
+collision/mask = 1023
+
+[node name="Sprite" type="Sprite" parent="Area2D"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( -32.2271, -31.4008 )
+transform/scale = Vector2( 0.321463, 0.501737 )
 texture = ExtResource( 2 )
-stretch_mode = 0
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+transform/pos = Vector2( -0.216067, 1.05422 )
+transform/scale = Vector2( 2.83949, 3.20298 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="input_event" from="Area2D" to="." method="doStuff"]
 
 
