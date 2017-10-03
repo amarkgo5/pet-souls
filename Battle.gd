@@ -35,7 +35,6 @@ func _on_btnAttack_toggled(pressed):
 		mode = BattleMode.IDLE
 		return
 	
-	get_node("Monsters").lastClicked = null
 	action = BattleAction.ATTACK
 	mode = BattleMode.SELECT_TARGET
 	
