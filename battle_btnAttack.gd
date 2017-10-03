@@ -13,3 +13,6 @@ func _toggled(pressed):
 	else:
 		self.text = "Attack"
 
+func deselect():
+	self.set_pressed(false)
+	self.text = "Attack"

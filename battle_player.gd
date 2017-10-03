@@ -1,4 +1,4 @@
-extends Node
+extends "playerStats.gd"
 
 # class member variables go here, for example:
 var movementSpeed = 20

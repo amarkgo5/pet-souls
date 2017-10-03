@@ -24,7 +24,7 @@ func _ready():
 	set_pos(coordinates)
 	get_node("Area2D/Sprite").set_texture(image)
 	#add_to_group("monsters")
-	self.connect("monster_clicked", self.get_node("/root/Battle/Monsters"), "monster_clicked")
+	self.connect("monster_clicked", self.get_node("/root/Battle"), "monster_clicked")
 
 func setType(type):
 	if (type == "" || type == "monster"): image = ResourceLoader.load("res://textures/monsters/monster.png")
@@ -33,9 +33,10 @@ func die():
 	alive = false
 	image = ResourceLoader.load("res://textures/monsters/death.png")
 	get_node("Area2D/Sprite").set_texture(image)
+	get_node("Area2D").set_pickable(false)
 
 func takeDamage(damage):
-	health -= damage
+	health -= int(damage)
 	if (health <= 0): die()
 	
 func doStuff(viewport, event, shape_idx):
