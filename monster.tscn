@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://monster.gd" type="Script" id=1]
 [ext_resource path="res://textures/monsters/monster.png" type="Texture" id=2]
@@ -8,23 +8,18 @@
 custom_solver_bias = 0.0
 extents = Vector2( 11.3378, 10 )
 
-[sub_resource type="Curve2D" id=2]
-
-bake_interval = 5.0
-_data = {
-"points": Vector2Array( 0, 0, -19.1003, -37.9998, 310.964, 128.012, 0, 0, 24.5575, -37.9997, 300.389, 46.4332, 0, 0, -31.379, -63.3329, 315.397, -25.9473, 0, 0, 27.2861, -54.2854, 297.661, -110.994, 0, 0, 0, 0, 312.668, -203.279 )
-}
-
 [node name="monster" type="Control"]
 
+anchor/right = 1
+anchor/bottom = 1
 focus/ignore_mouse = true
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 99.0
-margin/bottom = 65.0
+margin/right = 925.0
+margin/bottom = 535.0
 script/script = ExtResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -57,42 +52,6 @@ transform/scale = Vector2( 2.83949, 3.20298 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
-
-[node name="Path2D" type="Path2D" parent="."]
-
-transform/pos = Vector2( -8.01833, -7.1963 )
-transform/scale = Vector2( 0.183243, 0.138159 )
-curve = SubResource( 2 )
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-
-transform/pos = Vector2( 310.964, 128.012 )
-offset = 0.0
-h_offset = 0.0
-v_offset = 0.0
-rotate = false
-cubic_interp = true
-loop = true
-lookahead = 4.0
-
-[node name="damageLbl" type="Label" parent="Path2D/PathFollow2D"]
-
-visibility/opacity = 0.0
-rect/scale = Vector2( 10, 10 )
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = -281.0
-margin/top = -62.0
-margin/right = -225.0
-margin/bottom = -43.0
-custom_colors/font_color = Color( 0.964844, 0.0753784, 0.0753784, 1 )
-text = "Damage"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
 [connection signal="input_event" from="Area2D" to="." method="doStuff"]
 

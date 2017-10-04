@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://floatingDamage.gd" type="Script" id=1]
+
+[sub_resource type="Curve2D" id=1]
+
+bake_interval = 5.0
+_data = {
+"points": Vector2Array( 0, 0, 2.95807, -14.377, -0.187286, -0.194931, 0, 0, -0.386504, -12.666, -1.91896, -18.1132, 0, 0, 4.13346, -21.9735, 1.72488, -36.1181, 0, 0, 0, 0, 0.0101318, -58.1955 )
+}
+
+[node name="floatingDamage" type="Node"]
+
+script/script = ExtResource( 1 )
+floating_time = 1.5
+
+[node name="Path2D" type="Path2D" parent="."]
+
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+
+transform/pos = Vector2( -0.187286, -0.194931 )
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = false
+cubic_interp = true
+loop = true
+lookahead = 4.0
+
+[node name="Label" type="Label" parent="Path2D/PathFollow2D"]
+
+anchor/right = 1
+anchor/bottom = 1
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -41.0
+margin/top = -13.0
+margin/right = 65.0
+margin/bottom = 63.0
+custom_colors/font_color = Color( 0.976563, 0.102997, 0.102997, 1 )
+text = "Test"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+
