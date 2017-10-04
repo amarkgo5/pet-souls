@@ -1,6 +1,7 @@
 extends "playerStats.gd"
 
 # class member variables go here, for example:
+var alive = true
 var movementSpeed = 20
 var inAttackAnimation = false
 var timeElapsed = 0

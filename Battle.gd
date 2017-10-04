@@ -1,13 +1,11 @@
 extends Node
 export (PackedScene) var monster
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+# class member variables go here
+enum BattleMode {START, WAIT, IDLE, SELECT_TARGET, END}
 enum BattleAction {WAIT, SELECT, ATTACK, DEFEND}
-enum BattleMode {WAIT, IDLE, SELECT_TARGET}
+var mode = BattleMode.START
 var action = BattleAction.WAIT
-var mode = BattleMode.IDLE
 var player = null
 var targetNode = null
 
@@ -15,9 +13,18 @@ func _ready():
 	player = get_node("player")
 	# add three monsters
 	addMonster("monster", 630, 240)
-	addMonster("monster", 750, 315)
-	addMonster("monster", 650, 390)
+	#addMonster("monster", 750, 315)
+	#addMonster("monster", 650, 390)
 	set_process(true)
+
+func _process(delta):
+	#handles battle workflow
+	if (mode == BattleMode.END):
+		#run battle results
+		#get_node("/root/global").goto_scene("res://world1.tscn")
+		var battleResult = ResourceLoader.load("res://battleResults.tscn")
+		var resultIns = battleResult.instance()
+		add_child(resultIns)
 
 func addMonster(type, x, y):
 	var monstersNode = get_node("Monsters")
@@ -44,5 +51,21 @@ func monster_clicked(monsterNode):
 		get_node("btnAttack").deselect()
 		
 func attackTarget(attacker, target):
+	mode = BattleMode.IDLE
+	action = BattleAction.WAIT
+	# Take damage must go last as it can change the mode
 	target.takeDamage(attacker.attack)
 	
+func checkEOB(sourceType, sourceNode):
+	if (sourceType == "die"):
+		if (sourceNode == player and !player.alive):
+			mode = BattleMode.END
+		#pet lookup as elif?
+		else:
+			var foundOne = false
+			for mon in get_node("Monsters").get_children():
+				if (mon.alive == true): 
+					foundOne = true
+					break
+			if (!foundOne): mode = BattleMode.END
+

@@ -5,6 +5,7 @@ extends Control
 # var b = "textvar"
 
 signal monster_clicked
+signal die 
 
 var name = ""
 var attack = 5
@@ -25,6 +26,7 @@ func _ready():
 	get_node("Area2D/Sprite").set_texture(image)
 	#add_to_group("monsters")
 	self.connect("monster_clicked", self.get_node("/root/Battle"), "monster_clicked")
+	self.connect("die", self.get_node("/root/Battle"), "checkEOB")
 
 func setType(type):
 	if (type == "" || type == "monster"): image = ResourceLoader.load("res://textures/monsters/monster.png")
@@ -34,6 +36,7 @@ func die():
 	image = ResourceLoader.load("res://textures/monsters/death.png")
 	get_node("Area2D/Sprite").set_texture(image)
 	get_node("Area2D").set_pickable(false)
+	emit_signal("die", "die", self)
 
 func takeDamage(damage):
 	health -= int(damage)

@@ -10,7 +10,7 @@ func _ready():
 	# Initialization here
 	btnExplore = get_node("ParallaxBackground").get_node("btnExplore")
 	btnExplore.connect("pressed", self, "_on_btnExplore_pressed")
-	pass
+	get_node("/root/global").current_map = "world1"
 
 func _on_btnExplore_pressed():
 	# Change scene from map to battle
