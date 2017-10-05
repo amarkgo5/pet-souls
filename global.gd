@@ -21,6 +21,9 @@ func _deferred_goto_scene(path):
 	get_tree().set_current_scene(current_scene)
 
 func goto_scene_loaded(scene):
+	call_deferred("_deferred_goto_scene_loaded", scene)
+
+func _deferred_goto_scene_loaded(scene):
 	current_scene.free()
 	current_scene = scene.instance()
 	get_tree().get_root().add_child(current_scene)

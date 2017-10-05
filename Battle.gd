@@ -2,7 +2,7 @@ extends Node
 export (PackedScene) var monster
 
 # class member variables go here
-enum BattleMode {START, WAIT, IDLE, SELECT_TARGET, END}
+enum BattleMode {START, WAIT, IDLE, SELECT_TARGET, END, RESULTS}
 enum BattleAction {WAIT, SELECT, ATTACK, DEFEND}
 var mode = BattleMode.START
 var action = BattleAction.WAIT
@@ -24,6 +24,7 @@ func _process(delta):
 		#get_node("/root/global").goto_scene("res://world1.tscn")
 		var battleResult = ResourceLoader.load("res://battleResults.tscn")
 		var resultIns = battleResult.instance()
+		mode = BattleMode.RESULTS
 		add_child(resultIns)
 
 func addMonster(type, x, y):
