@@ -28,8 +28,15 @@ func _ready():
 	self.connect("monster_clicked", self.get_node("/root/Battle"), "monster_clicked")
 	self.connect("die", self.get_node("/root/Battle"), "checkEOB")
 
+func load_from_dict(monster_dict):
+	setType(monster_dict["resource"])
+	health = int(monster_dict["health"])
+	attack = int(monster_dict["attack"])
+
 func setType(type):
-	if (type == "" || type == "monster"): image = ResourceLoader.load("res://textures/monsters/monster.png")
+	var resString = "res://textures/monsters/%s.png" % type
+	if (!File.new().file_exists(resString)): resString = "res://textures/monsters/monster.png"
+	image = ResourceLoader.load(resString)
 
 func die():
 	alive = false

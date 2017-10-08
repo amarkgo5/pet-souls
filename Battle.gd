@@ -8,13 +8,18 @@ var mode = BattleMode.START
 var action = BattleAction.WAIT
 var player = null
 var targetNode = null
+var monster_dict = {}
+
+# Built in Methods
 
 func _ready():
 	player = get_node("player")
+	load_monster_dict()
 	# add three monsters
-	addMonster("monster", 630, 240)
-	#addMonster("monster", 750, 315)
-	#addMonster("monster", 650, 390)
+	var mCount = randi()%3+1
+	addMonster(randi()%3+1, 630, 240)
+	if (mCount > 1): addMonster(randi()%3+1, 650, 390)
+	if (mCount > 2): addMonster(randi()%3+1, 750, 315)
 	set_process(true)
 
 func _process(delta):
@@ -27,13 +32,6 @@ func _process(delta):
 		mode = BattleMode.RESULTS
 		add_child(resultIns)
 
-func addMonster(type, x, y):
-	var monstersNode = get_node("Monsters")
-	var m = monster.instance()
-	m.setType(type)
-	m.coordinates = Vector2(x,y)
-	monstersNode.add_child(m)
-
 func _on_btnExit_pressed():
 	get_node("/root/global").goto_scene("res://world1.tscn")
 
@@ -45,12 +43,33 @@ func _on_btnAttack_toggled(pressed):
 	
 	action = BattleAction.ATTACK
 	mode = BattleMode.SELECT_TARGET
-	
+
+# Emitter Methods
+
 func monster_clicked(monsterNode):
 	if (mode == BattleMode.SELECT_TARGET):
 		attackTarget(player, monsterNode)
 		get_node("btnAttack").deselect()
-		
+
+# Local implementation
+
+func load_monster_dict():
+	var file = File.new()
+	if (!file.file_exists("res://monsters.json")):
+		print("Monster.json file doesn't exist")
+		return
+	file.open("res://monsters.json", file.READ)
+	var text = file.get_as_text()
+	monster_dict.parse_json(text)
+	file.close()
+
+func addMonster(mIndex, x, y):
+	var monstersNode = get_node("Monsters")
+	var m = monster.instance()
+	m.load_from_dict(monster_dict[String(mIndex)])
+	m.coordinates = Vector2(x,y)
+	monstersNode.add_child(m)
+
 func attackTarget(attacker, target):
 	mode = BattleMode.IDLE
 	action = BattleAction.WAIT
