@@ -7,6 +7,7 @@ extends Control
 signal monster_clicked
 signal die 
 
+var type = "monster"
 var name = ""
 var attack = 5
 var defence = 0

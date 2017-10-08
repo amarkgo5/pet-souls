@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://Battle.gd" type="Script" id=1]
 [ext_resource path="res://monster.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://battle_player.gd" type="Script" id=4]
 [ext_resource path="res://CHAR.png" type="Texture" id=5]
 [ext_resource path="res://battle_btnAttack.gd" type="Script" id=6]
+[ext_resource path="res://turn_order.gd" type="Script" id=7]
 
 [node name="Battle" type="Node"]
 
@@ -107,6 +108,49 @@ enabled_focus_mode = 2
 shortcut = null
 text = "Exit"
 flat = false
+
+[node name="turn_order" type="Node" parent="."]
+
+script/script = ExtResource( 7 )
+
+[node name="Panel" type="Panel" parent="turn_order"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 203.0
+margin/top = 24.0
+margin/right = 815.0
+margin/bottom = 100.0
+
+[node name="Label" type="Label" parent="turn_order/Panel"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 76.0
+margin/bottom = 14.0
+text = "Turn Order"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="turnOrderGrid" type="GridContainer" parent="turn_order/Panel"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 1.0
+margin/top = 14.0
+margin/right = 614.0
+margin/bottom = 74.0
+custom_constants/hseparation = 50
+columns = 10
 
 [connection signal="toggled" from="btnAttack" to="." method="_on_btnAttack_toggled"]
 

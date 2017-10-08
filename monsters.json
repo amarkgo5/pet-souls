@@ -3,18 +3,21 @@
 		"id": "dog",
 		"resource": "monster1",
 		"health": "5",
-		"attack": "1"
+		"attack": "1",
+		"speed": "5"
 	},
 	"2": {
 		"id": "evil_bunny",
 		"resource": "monster2",
 		"health": "15",
-		"attack": "5"
+		"attack": "5",
+		"speed": "8"
 	},
 	"3": {
 		"id": "carnivore_plant",
 		"resource": "monster3",
 		"health": "20",
-		"attack": "10"
+		"attack": "10",
+		"speed": "1"
 	}
 }

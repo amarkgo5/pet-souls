@@ -14,12 +14,15 @@ var monster_dict = {}
 
 func _ready():
 	player = get_node("player")
+	#add player to turn order
+	get_node("turn_order").add_to_turn_order(player)
+	
 	load_monster_dict()
 	# add three monsters
-	var mCount = randi()%3+1
+	var mCount = randi()%100+1
 	addMonster(randi()%3+1, 630, 240)
-	if (mCount > 1): addMonster(randi()%3+1, 650, 390)
-	if (mCount > 2): addMonster(randi()%3+1, 750, 315)
+	if (mCount > 25): addMonster(randi()%3+1, 650, 390)
+	if (mCount > 75): addMonster(randi()%3+1, 750, 315)
 	set_process(true)
 
 func _process(delta):
@@ -69,6 +72,7 @@ func addMonster(mIndex, x, y):
 	m.load_from_dict(monster_dict[String(mIndex)])
 	m.coordinates = Vector2(x,y)
 	monstersNode.add_child(m)
+	get_node("turn_order").add_to_turn_order(m)
 
 func attackTarget(attacker, target):
 	mode = BattleMode.IDLE
