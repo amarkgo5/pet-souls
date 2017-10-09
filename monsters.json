@@ -11,7 +11,7 @@
 		"resource": "monster2",
 		"health": "15",
 		"attack": "5",
-		"speed": "8"
+		"speed": "12"
 	},
 	"3": {
 		"id": "carnivore_plant",

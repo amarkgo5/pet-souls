@@ -4,9 +4,9 @@ extends Node
 # var a = 2
 # var b = "textvar"
 var name = "Player"
-var health = "10"
-var attack = "10"
-var speed = "10"
+var health = 10
+var attack = 10
+var speed = 10
 
 var map = "world1"
 var position = Vector2()

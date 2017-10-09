@@ -9,9 +9,9 @@ signal die
 
 var type = "monster"
 var name = ""
-var attack = 5
-var defence = 0
-var health = 10
+var health = 0
+var attack = 0
+var speed = 0
 var coordinates = Vector2(0,0)
 var image = null
 var alive = true
@@ -33,6 +33,7 @@ func load_from_dict(monster_dict):
 	setType(monster_dict["resource"])
 	health = int(monster_dict["health"])
 	attack = int(monster_dict["attack"])
+	speed = int(monster_dict["speed"])
 
 func setType(type):
 	var resString = "res://textures/monsters/%s.png" % type

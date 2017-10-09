@@ -25,7 +25,7 @@ func _process(delta):
 	if (displayDamage == ""): self.free()
 	
 func setDamage(damage):
-	displayDamage = damage
+	displayDamage = String(damage)
 
 func positionToObject(object):
 	var objPos = object.get_begin()

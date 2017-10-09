@@ -79,6 +79,7 @@ func attackTarget(attacker, target):
 	action = BattleAction.WAIT
 	# Take damage must go last as it can change the mode
 	target.takeDamage(attacker.attack)
+	get_node("turn_order").take_turn(attacker)
 	
 func checkEOB(sourceType, sourceNode):
 	if (sourceType == "die"):
