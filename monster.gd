@@ -7,6 +7,7 @@ extends Control
 signal monster_clicked
 signal die 
 
+enum MonAction {ATTACK}
 var type = "monster"
 var name = ""
 var health = 0
@@ -45,6 +46,7 @@ func die():
 	image = ResourceLoader.load("res://textures/monsters/death.png")
 	get_node("Area2D/Sprite").set_texture(image)
 	get_node("Area2D").set_pickable(false)
+	get_node("/root/Battle/turn_order").remove_from_turn_order(self)
 	emit_signal("die", "die", self)
 
 func takeDamage(damage):
@@ -61,3 +63,9 @@ func doStuff(viewport, event, shape_idx):
 			emit_signal("monster_clicked", self)
 	#else:
 	#	print("event")
+
+func take_turn():
+	var action = MonAction.ATTACK
+	if (action == MonAction.ATTACK):
+		var target = get_node("/root/Battle/player")
+		get_node("/root/Battle").attackTarget(self, target)

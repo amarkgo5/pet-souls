@@ -2,13 +2,16 @@ extends Node
 export (PackedScene) var monster
 
 # class member variables go here
-enum BattleMode {START, WAIT, IDLE, SELECT_TARGET, END, RESULTS}
+enum BattleMode {START, WAIT, IDLE, TURN_PLAYER, TURN_MONSTER, SELECT_TARGET, END, RESULTS}
 enum BattleAction {WAIT, SELECT, ATTACK, DEFEND}
 var mode = BattleMode.START
 var action = BattleAction.WAIT
+
 var player = null
-var targetNode = null
 var monster_dict = {}
+
+var next_turn = null
+var targetNode = null
 
 # Built in Methods
 
@@ -23,22 +26,38 @@ func _ready():
 	addMonster(randi()%3+1, 630, 240)
 	if (mCount > 25): addMonster(randi()%3+1, 650, 390)
 	if (mCount > 75): addMonster(randi()%3+1, 750, 315)
+	
+	next_turn = get_node("turn_order").get_next()
+	if (next_turn == player): mode = BattleMode.TURN_PLAYER
+	else: mode = BattleMode.TURN_MONSTER
 	set_process(true)
 
 func _process(delta):
 	#handles battle workflow
 	if (mode == BattleMode.END):
 		#run battle results
-		#get_node("/root/global").goto_scene("res://world1.tscn")
 		var battleResult = ResourceLoader.load("res://battleResults.tscn")
 		var resultIns = battleResult.instance()
 		mode = BattleMode.RESULTS
 		add_child(resultIns)
+		set_process(false)
+		return
+	
+	if (mode == BattleMode.TURN_PLAYER):
+		player.set_action(true)
+	else:
+		player.set_action(false)
+		
+	if (mode == BattleMode.TURN_MONSTER): next_turn.take_turn()
 
 func _on_btnExit_pressed():
 	get_node("/root/global").goto_scene("res://world1.tscn")
 
 func _on_btnAttack_toggled(pressed):
+	if (mode != BattleMode.TURN_PLAYER):
+		get_node("btnAttack").deselect()
+		return
+	
 	if (pressed == false): 
 		action = BattleAction.WAIT
 		mode = BattleMode.IDLE
