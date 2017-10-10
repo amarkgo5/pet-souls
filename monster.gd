@@ -69,3 +69,4 @@ func take_turn():
 	if (action == MonAction.ATTACK):
 		var target = get_node("/root/Battle/player")
 		get_node("/root/Battle").attackTarget(self, target)
+		get_node("/root/Battle").take_turn(self)

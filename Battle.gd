@@ -12,6 +12,8 @@ var monster_dict = {}
 
 var next_turn = null
 var targetNode = null
+var delay_time = 0
+var time_elapsed = 0
 
 # Built in Methods
 
@@ -30,9 +32,14 @@ func _ready():
 	next_turn = get_node("turn_order").get_next()
 	if (next_turn == player): mode = BattleMode.TURN_PLAYER
 	else: mode = BattleMode.TURN_MONSTER
+	delay_time = 2 #battle start delay
 	set_process(true)
 
 func _process(delta):
+	if (time_elapsed < delay_time):
+		time_elapsed += get_process_delta_time()
+		return
+	
 	#handles battle workflow
 	if (mode == BattleMode.END):
 		#run battle results
@@ -66,12 +73,19 @@ func _on_btnAttack_toggled(pressed):
 	action = BattleAction.ATTACK
 	mode = BattleMode.SELECT_TARGET
 
+# Node Methods
+
+func set_delay(seconds):
+	delay_time = seconds
+	time_elapsed = 0
+
 # Emitter Methods
 
 func monster_clicked(monsterNode):
 	if (mode == BattleMode.SELECT_TARGET):
 		attackTarget(player, monsterNode)
 		get_node("btnAttack").deselect()
+		take_turn(player)
 
 # Local implementation
 
@@ -92,6 +106,16 @@ func addMonster(mIndex, x, y):
 	m.coordinates = Vector2(x,y)
 	monstersNode.add_child(m)
 	get_node("turn_order").add_to_turn_order(m)
+
+func take_turn(source):
+	get_node("turn_order").take_turn(source)
+	next_turn = get_node("turn_order").get_next()
+	if (mode != BattleMode.END):
+		if (next_turn == player):
+			mode = BattleMode.TURN_PLAYER
+		else:
+			mode = BattleMode.TURN_MONSTER
+	set_delay(1)
 
 func attackTarget(attacker, target):
 	mode = BattleMode.IDLE

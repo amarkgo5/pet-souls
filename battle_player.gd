@@ -44,3 +44,6 @@ func takeDamage(damage):
 	damageNode.positionToObject(self)
 	damageNode.setDamage(damage)
 	add_child(damageNode)
+
+func die():
+	pass

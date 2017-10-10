@@ -58,7 +58,7 @@ func take_turn(source):
 	update_turn_grid()
 
 func remove_from_turn_order(source):
-	for turn in range(turn_list.size()-1):
+	for turn in range(turn_list.size()-1, 0, -1):
 		if (turn_list[turn]["node"] == source):
 			turn_list.remove(turn)
 	update_turn_grid()
