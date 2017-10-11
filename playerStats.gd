@@ -11,7 +11,13 @@ var speed = 10
 var map = "world1"
 var position = Vector2()
 
+var gold = 100
+var items = {}
+
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	pass
+
+func get_gold():
+	return gold
