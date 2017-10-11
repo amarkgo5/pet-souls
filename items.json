@@ -1,0 +1,11 @@
+{
+	"monster_core": {
+		"name": "Monster Core",
+		"resource": "monster_core"
+	},
+	
+	"monster_hair": {
+		"name": "Monster Hair",
+		"resource": "monster_hair"
+	}
+}

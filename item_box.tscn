@@ -42,6 +42,7 @@ margin/left = 2.0
 margin/top = 2.0
 margin/right = 48.0
 margin/bottom = 48.0
+expand = true
 stretch_mode = 0
 
 [node name="item_count" type="Label" parent="boxTexture"]
@@ -54,6 +55,8 @@ margin/left = 31.0
 margin/top = 36.0
 margin/right = 50.0
 margin/bottom = 50.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.0273438, 0.0267029, 0.0267029, 1 )
 text = "##"
 align = 2
 percent_visible = 1.0

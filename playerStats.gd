@@ -15,9 +15,11 @@ var gold = 100
 var items = {}
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+	items["monster_core"] = 10
+	items["monster_hair"] = 2
 
 func get_gold():
 	return gold
+
+func get_items():
+	return items
