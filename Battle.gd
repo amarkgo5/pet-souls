@@ -58,7 +58,7 @@ func _process(delta):
 	if (mode == BattleMode.TURN_MONSTER): next_turn.take_turn()
 
 func _on_btnExit_pressed():
-	get_node("/root/global").goto_scene("res://world1.tscn")
+	get_node("/root/global").goto_scene_once_loaded(get_node("/root/global").get_map_resource())
 
 func _on_btnAttack_toggled(pressed):
 	if (mode != BattleMode.TURN_PLAYER):

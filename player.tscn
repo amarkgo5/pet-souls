@@ -12,7 +12,7 @@ height = 20.0
 [node name="player" type="Node"]
 
 script/script = ExtResource( 1 )
-MOTION_SPEED = 140
+SPEED = 150
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 
@@ -47,8 +47,8 @@ anchor_mode = 1
 rotating = false
 current = true
 zoom = Vector2( 1, 1 )
-limit/left = -10000000
-limit/top = -10000000
+limit/left = 0
+limit/top = 0
 limit/right = 10000000
 limit/bottom = 10000000
 drag_margin/h_enabled = true

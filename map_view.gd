@@ -14,12 +14,17 @@ func _ready():
 	btnExplore.connect("pressed", self, "_on_btnExplore_pressed")
 	get_node("/root/global").current_map = "map_sewer"
 	
-	map = load("res://Maps/map_sewer.tscn")
-	add_child(map.instance())
+	var map_packed = load("res://Maps/map_sewer.tscn")
+	map = map_packed.instance()
+	add_child(map)
+	get_node("/root/global").set_current_map("map_sewer")
 	
 	var player_packed = load("res://player.tscn")
 	player = player_packed.instance()
 	player.get_node("KinematicBody2D").set_pos(Vector2(950,470))
+	var map_size = map.get_node("background").get_texture().get_size()
+	player.get_node("KinematicBody2D/Camera2D").set_limit(MARGIN_RIGHT, map_size.x * 2)
+	player.get_node("KinematicBody2D/Camera2D").set_limit(MARGIN_BOTTOM, map_size.y* 2)
 	add_child(player)
 	
 

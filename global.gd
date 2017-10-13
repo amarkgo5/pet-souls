@@ -1,7 +1,7 @@
 extends Node
 
 var current_scene = null
-var current_map = "world1"
+var current_map = ""
 
 var resource_queue = [] 
 var loading_resource = null
@@ -17,6 +17,10 @@ func _ready():
 	current_scene = root.get_child(root.get_child_count()-1)
 
 func _process(delta):
+	if (waiting_on_resource != null and is_resource_loaded(waiting_on_resource)):
+		goto_scene_with_loaded_resource(waiting_on_resource)
+		waiting_on_resource = null
+		
 	if (loading_resource == null):
 		if (resource_queue.empty() == true):
 			set_process(false)
@@ -77,6 +81,7 @@ func goto_scene_once_loaded(resource):
 	else:
 		#bump scene to top and load it as soon as it is ready
 		waiting_on_resource = resource
+		set_process(true)
 		if (loading_resource != waiting_on_resource and resource_queue.front() != resource):
 			resource_queue.remove(resource)
 			resource_queue.push_front(resource)
@@ -100,5 +105,8 @@ func _deferred_goto_scene_loaded(scene):
 	get_tree().set_current_scene(current_scene)	
 
 func get_map_resource():
-	var mapResource = "res://%s.tscn" % current_map
+	var mapResource = "res://Maps/%s.tscn" % current_map
 	return mapResource
+
+func set_current_map(map_name):
+	current_map = map_name

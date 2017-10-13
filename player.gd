@@ -1,35 +1,30 @@
 extends Node
 
-export var MOTION_SPEED = 140
+export var SPEED = 150
 
-var RayNode
+var vel = Vector2()
+var body
 
 func _ready():
+	body = get_node("KinematicBody2D")
 	set_fixed_process(true)
-	
-	#RayNode = get_node("RayCast2D")
-	
+
 func _fixed_process(delta):
-	var motion = Vector2()
-	
+	vel = Vector2(0,0)
 	if (Input.is_action_pressed("ui_up")):
-		motion += Vector2(0, -1)
-		#RayNode.set_rotd(180)
-	
+		vel += Vector2(0, -SPEED)
 	if (Input.is_action_pressed("ui_down")):
-		motion += Vector2(0, 1)
-		#RayNode.set_rotd(0)
-		
+		vel += Vector2(0, SPEED)
 	if (Input.is_action_pressed("ui_left")):
-		motion += Vector2(-1, 0)
-		#RayNode.set_rotd(-90)
-		
+		vel += Vector2(-SPEED, 0)
 	if (Input.is_action_pressed("ui_right")):
-		motion += Vector2(1, 0)
-		#RayNode.set_rotd(90)
+		vel += Vector2(SPEED, 0)
 	
-	#motion = motion.normalized()*MOTION_SPEED*delta
-	#move(motion)
-	
-	pass
+	var motion = vel * delta
+	body.move(motion)
+	if (body.is_colliding()):
+		var n = body.get_collision_normal()
+		motion = n.slide(motion)
+		#vel = n.slide(vel)
+		body.move(motion)
 

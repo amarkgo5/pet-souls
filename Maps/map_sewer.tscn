@@ -1,21 +1,21 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://textures/background/map_sewer.png" type="Texture" id=1]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -9.99267, -9.16546, 9.16532, 1.11945, -7.44887, 8.22389, -9.99267, 6.69561 )
+points = Vector2Array( 580.52, 380.45, 826.019, 505.45, 656.543, 503.95, 124.988, 236.399 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 580.52, 380.45, 826.019, 505.45, 656.543, 503.95, 124.988, 236.399 )
+points = Vector2Array( 518.52, 294.45, 580.52, 380.45, 124.988, 236.399, 250.856, 160.269 )
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 518.52, 294.45, 580.52, 380.45, 124.988, 236.399, 256.987, 160.9 )
+points = Vector2Array( -9.99267, -9.16546, 9.16532, 1.11945, -7.44887, 8.22389, -9.99267, 6.69561 )
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
 
@@ -32,6 +32,36 @@ points = Vector2Array( 581.871, 255.953, 899.483, 0.234882, 898.983, 457.885, 71
 custom_solver_bias = 0.0
 points = Vector2Array( 645.371, 355.453, 581.871, 269.953, 716.085, 373.885, 693.085, 380.385 )
 
+[sub_resource type="ConvexPolygonShape2D" id=7]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0.863487, 251.421, 537.399, 505.023, 0.412231, 505.475 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -20.8856, -22.5154, 72.0718, -0.855377, -0.579391, -0.404129 )
+
+[sub_resource type="ConvexPolygonShape2D" id=9]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -0.128143, 30.7321, -20.8856, -22.5154, -0.579391, -0.404129 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0.323105, 168.266, 0.323105, 251.296, -38.9356, 203.914 )
+
+[sub_resource type="ConvexPolygonShape2D" id=11]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 900.668, 507.529, 900.668, 455.635, 941.28, 505.272, 940.378, 541.824 )
+
+[sub_resource type="ConvexPolygonShape2D" id=12]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 900.668, 507.529, 940.378, 541.824, 537.412, 537.311, 536.509, 506.175 )
+
 [node name="map_sewer" type="Node"]
 
 [node name="background" type="Sprite" parent="."]
@@ -43,17 +73,17 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="map_collision" type="Area2D" parent="background"]
+[node name="map_collision" type="StaticBody2D" parent="background"]
 
-input/pickable = true
+input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 9.24716, 0, 0, 8.89836, 92.9961, 111.939 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 shapes/1/shape = SubResource( 2 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
 shapes/2/shape = SubResource( 3 )
-shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/2/transform = Matrix32( 9.24716, 0, 0, 8.89836, 92.9961, 111.939 )
 shapes/2/trigger = false
 shapes/3/shape = SubResource( 4 )
 shapes/3/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -64,10 +94,37 @@ shapes/4/trigger = false
 shapes/5/shape = SubResource( 6 )
 shapes/5/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/5/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
+shapes/6/shape = SubResource( 7 )
+shapes/6/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/6/trigger = false
+shapes/7/shape = SubResource( 8 )
+shapes/7/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/7/trigger = false
+shapes/8/shape = SubResource( 9 )
+shapes/8/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/8/trigger = false
+shapes/9/shape = SubResource( 10 )
+shapes/9/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/9/trigger = false
+shapes/10/shape = SubResource( 11 )
+shapes/10/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/10/trigger = false
+shapes/11/shape = SubResource( 12 )
+shapes/11/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/11/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D 3" type="CollisionPolygon2D" parent="background/map_collision"]
+
+build_mode = 0
+polygon = Vector2Array( 250.856, 160.269, 124.988, 236.399, 656.543, 503.95, 826.019, 505.45, 580.52, 380.45, 518.52, 294.45 )
+shape_range = Vector2( 0, 1 )
+trigger = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="background/map_collision"]
 
@@ -75,14 +132,7 @@ transform/pos = Vector2( 92.9961, 111.939 )
 transform/scale = Vector2( 9.24716, 8.89836 )
 build_mode = 0
 polygon = Vector2Array( -9.99267, -9.16546, 9.16532, 1.11945, -7.44887, 8.22389, -9.99267, 6.69561 )
-shape_range = Vector2( 0, 0 )
-trigger = false
-
-[node name="CollisionPolygon2D 3" type="CollisionPolygon2D" parent="background/map_collision"]
-
-build_mode = 0
-polygon = Vector2Array( 256.987, 160.9, 124.988, 236.399, 656.543, 503.95, 826.019, 505.45, 580.52, 380.45, 518.52, 294.45 )
-shape_range = Vector2( 1, 2 )
+shape_range = Vector2( 2, 2 )
 trigger = false
 
 [node name="CollisionPolygon2D 2" type="CollisionPolygon2D" parent="background/map_collision"]
@@ -90,6 +140,34 @@ trigger = false
 build_mode = 0
 polygon = Vector2Array( 72.806, -0.0513916, 581.871, 255.953, 581.871, 269.953, 645.371, 355.453, 693.085, 380.385, 716.085, 373.885, 898.983, 457.885, 899.483, 0.234882 )
 shape_range = Vector2( 3, 5 )
+trigger = false
+
+[node name="CollisionPolygon2D 4" type="CollisionPolygon2D" parent="background/map_collision"]
+
+build_mode = 0
+polygon = Vector2Array( 0.863487, 251.421, 537.399, 505.023, 0.412231, 505.475 )
+shape_range = Vector2( 6, 6 )
+trigger = false
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="background/map_collision"]
+
+build_mode = 0
+polygon = Vector2Array( -0.128143, 30.7321, -0.579391, -0.404129, 72.0718, -0.855377, -20.8856, -22.5154 )
+shape_range = Vector2( 7, 8 )
+trigger = false
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="background/map_collision"]
+
+build_mode = 0
+polygon = Vector2Array( 0.323105, 168.266, 0.323105, 251.296, -38.9356, 203.914 )
+shape_range = Vector2( 9, 9 )
+trigger = false
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="background/map_collision"]
+
+build_mode = 0
+polygon = Vector2Array( 536.509, 506.175, 900.668, 507.529, 900.668, 455.635, 941.28, 505.272, 940.378, 541.824, 537.412, 537.311 )
+shape_range = Vector2( 10, 11 )
 trigger = false
 
 
