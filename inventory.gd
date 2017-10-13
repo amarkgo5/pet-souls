@@ -14,7 +14,7 @@ func _ready():
 	load_inventory()
 	load_gold()
 	add_items()
-	var btnItems = self.get_node("/root/world1/ParallaxBackground/btnItems")
+	var btnItems = self.get_node("/root/map_view/GUI/btnItems")
 	var parentPos = btnItems.get_begin()
 	var parentSize = btnItems.get_size()
 	var selfSize = get_size()
