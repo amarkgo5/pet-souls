@@ -18,7 +18,7 @@ func _ready():
 	var parentPos = btnItems.get_begin()
 	var parentSize = btnItems.get_size()
 	var selfSize = get_size()
-	set_pos(Vector2(parentPos.x + parentSize.x - selfSize.x, parentPos.y - selfSize.y))
+	set_pos(Vector2(parentSize.x - selfSize.x, - selfSize.y))
 
 func load_item_dict():
 	var file = File.new()
