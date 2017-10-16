@@ -44,6 +44,7 @@ func load_resource_interactive(resource):
 		var err = loader.poll()
 		if (err == ERR_FILE_EOF):
 			loaded_resources[resource] = loader.get_resource()
+			loading_resource = null
 			loader = null
 			break
 		elif (err == OK):
@@ -61,6 +62,9 @@ func load_resource(resource):
 func is_resource_loaded(resource):
 	if (loaded_resources.has(resource)): return true
 	else: return false
+
+func get_loaded_resource(resource):
+	return loaded_resources[resource]
 
 func goto_scene(path):
 	call_deferred("_deferred_goto_scene", path)
@@ -110,3 +114,8 @@ func get_map_resource():
 
 func set_current_map(map_name):
 	current_map = map_name
+
+func return_to_map():
+	if (!is_resource_loaded(get_map_resource())):
+		load_resource(get_map_resource())
+	goto_scene_once_loaded("res://map_view.tscn")

@@ -8,8 +8,8 @@ var health = 10
 var attack = 10
 var speed = 10
 
-var map = "world1"
-var position = Vector2()
+var map = "map_sewer"
+var position = Vector2(950,470)
 
 var gold = 100
 var items = {}
@@ -17,9 +17,16 @@ var items = {}
 func _ready():
 	items["monster_core"] = 10
 	items["monster_hair"] = 2
+	get_node("/root/global").set_current_map(map)
 
 func get_gold():
 	return gold
 
 func get_items():
 	return items
+
+func get_last_position():
+	return position
+
+func set_position(pos):
+	position = pos

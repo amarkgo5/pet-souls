@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=21 format=1]
 
 [ext_resource path="res://textures/background/map_sewer.png" type="Texture" id=1]
 
@@ -62,6 +62,41 @@ points = Vector2Array( 900.668, 507.529, 900.668, 455.635, 941.28, 505.272, 940.
 custom_solver_bias = 0.0
 points = Vector2Array( 900.668, 507.529, 940.378, 541.824, 537.412, 537.311, 536.509, 506.175 )
 
+[sub_resource type="ConvexPolygonShape2D" id=13]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 1020.76, 286.617, 981.307, 279.135, 1008.51, 275.734 )
+
+[sub_resource type="ConvexPolygonShape2D" id=14]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 1020.76, 286.617, 1008.51, 275.734, 1035.04, 272.333 )
+
+[sub_resource type="ConvexPolygonShape2D" id=15]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 1056.13, 269.612, 1020.76, 286.617, 1035.04, 272.333 )
+
+[sub_resource type="ConvexPolygonShape2D" id=16]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 981.307, 220.639, 977.226, 245.805, 973.825, 243.765, 967.703, 224.039 )
+
+[sub_resource type="ConvexPolygonShape2D" id=17]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 981.307, 220.639, 967.703, 224.039, 994.911, 211.796, 991.51, 216.557 )
+
+[sub_resource type="ConvexPolygonShape2D" id=18]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 1020.76, 228.121, 991.51, 216.557, 994.911, 211.796, 1043.88, 213.157, 1051.37, 231.522 )
+
+[sub_resource type="ConvexPolygonShape2D" id=19]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 1024.16, 245.805, 1020.76, 228.121, 1051.37, 231.522, 1056.13, 269.612, 1035.04, 272.333 )
+
 [node name="map_sewer" type="Node"]
 
 [node name="background" type="Sprite" parent="."]
@@ -112,6 +147,27 @@ shapes/10/trigger = false
 shapes/11/shape = SubResource( 12 )
 shapes/11/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/11/trigger = false
+shapes/12/shape = SubResource( 13 )
+shapes/12/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/12/trigger = false
+shapes/13/shape = SubResource( 14 )
+shapes/13/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/13/trigger = false
+shapes/14/shape = SubResource( 15 )
+shapes/14/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/14/trigger = false
+shapes/15/shape = SubResource( 16 )
+shapes/15/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/15/trigger = false
+shapes/16/shape = SubResource( 17 )
+shapes/16/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/16/trigger = false
+shapes/17/shape = SubResource( 18 )
+shapes/17/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/17/trigger = false
+shapes/18/shape = SubResource( 19 )
+shapes/18/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/18/trigger = false
 collision/layers = 1
 collision/mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
