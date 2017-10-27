@@ -42,3 +42,10 @@ func _on_btnItems_toggled(pressed):
 		get_node("GUI/btnItems").add_child(inventory.instance())
 	else:
 		get_node("GUI/btnItems/inventory").free()
+
+func _on_btnExtract_toggled(pressed):
+	if (pressed):
+		var extract = preload("res://extraction.tscn")
+		get_node("GUI/btnExtract").add_child(extract.instance())
+	else:
+		get_node("GUI/btnExtract/extraction").free()

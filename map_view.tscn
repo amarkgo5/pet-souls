@@ -51,7 +51,6 @@ max_lines_visible = -1
 
 [node name="btnPlayer" type="Button" parent="GUI"]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -115,6 +114,41 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="btnExtract" type="Button" parent="GUI"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 820.0
+margin/top = 529.0
+margin/right = 894.0
+margin/bottom = 587.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+
+[node name="lblExtract" type="Label" parent="GUI/btnExtract"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 1.0
+margin/top = 10.0
+margin/right = 75.0
+margin/bottom = 52.0
+text = "Extraction"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [connection signal="toggled" from="GUI/btnItems" to="." method="_on_btnItems_toggled"]
+
+[connection signal="toggled" from="GUI/btnExtract" to="." method="_on_btnExtract_toggled"]
 
 

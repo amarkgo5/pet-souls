@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://textures/Energy.png" type="Texture" id=1]
+
+[node name="spriteTest" type="Node"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+input/pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="Sprite" type="Sprite" parent="Area2D"]
+
+transform/scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 1 )
+centered = false
+vframes = 2
+hframes = 2
+
+

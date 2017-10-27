@@ -1,0 +1,24 @@
+{
+	"Maps": {
+		"ws_valley": "Winding Stream Valley"
+		"hw_mountain": "Haze Wolf Mountain Range"
+		"ws_plain": "Wind Swept Plains"
+		"c_manor": "Creaking Manor"
+	},
+	
+	"ws_valley": {
+		"monsters": ["rust_wolf", "stone_talon_hawk", "thistleback_boar"]
+	},
+	
+	"hw_mountain": {
+		"monsters": ["garl_horn_elk", "wood_scale_snake", "haze_wolf", "giant_haze_wolf"]
+	},
+
+	"ws_plain": {
+		"monsters": ["red_beak_roc", "twin_horn_lizard", "thunder_panther", "rock_badger"]
+	},
+
+	"c_manor": {
+		"monsters": ["malevolent_spirit", "ravenous_skeleton", "possessed_adventurer"]
+	},	
+}
