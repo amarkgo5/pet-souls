@@ -17,6 +17,10 @@ var items = {}
 func _ready():
 	items["monster_core"] = 10
 	items["monster_hair"] = 2
+	items["monster_claw"] = 5
+	items["monster_claw_blue"] = 5
+	items["monster_claw_red"] = 5
+	items["monster_claw_gold"] = 5
 	get_node("/root/global").set_current_map(map)
 
 func get_gold():

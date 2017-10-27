@@ -7,5 +7,41 @@
 	"monster_hair": {
 		"name": "Monster Hair",
 		"resource": "monster_hair"
-	}
+	},
+	
+	"monster_claw": {
+		"name": "Monster Claw",
+		"resource": "basicclaw",
+		"description": "A demonic claw from a monster.",
+		"soul_force": "50",
+		"soul_chaos": "5",
+		"value": "10"
+	},
+	
+	"monster_claw_blue": {
+		"name": "Blue Monster Claw",
+		"resource": "blueclaw",
+		"description": "A soul infused demonic claw from a monster.",
+		"soul_force": "100",
+		"soul_chaos": "7",
+		"value": "30"
+	},
+
+		"monster_claw_red": {
+		"name": "Red Monster Claw",
+		"resource": "redclaw",
+		"description": "A highly demonic claw from a monster.",
+		"soul_force": "75",
+		"soul_chaos": "10",
+		"value": "70"
+	},
+	
+	"monster_claw_gold": {
+		"name": "Gold Monster Claw",
+		"resource": "goldclaw",
+		"description": "A dazzling golden demonic claw from a monster.",
+		"soul_force": "30",
+		"soul_chaos": "2",
+		"value": "500"
+	}	
 }

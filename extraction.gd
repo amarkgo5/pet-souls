@@ -13,7 +13,6 @@ var time_elapsed = 0
 func _ready():
 	progressBar = get_node("PanelContainer/Container/ProgressBar")
 	progressBar.set_value(0)
-	pass
 
 func _process(delta):
 	time_elapsed += get_process_delta_time()
